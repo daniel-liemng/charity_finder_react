@@ -1,4 +1,4 @@
-# Task Manager
+# Charity Finder
 
 A responsive charity finder web application that allows users to search for charities, view detailed information about each charity and save their favorite charities. Utilize the every.org API for fetching data.
 
@@ -18,11 +18,13 @@ A responsive charity finder web application that allows users to search for char
 
 ## Tech Stack
 
-**Client:** React, React Router Dom, Material-UI
+**Client:** React, React Router Dom, Material-UI, Typescript
+
+**Data Fetching:** every.org API
 
 ## Screenshots
 
-![App Screenshot](https://github.com/daniel-liemng/task_manager_react/blob/main/screenshot/task-manager-photo.png)
+![App Screenshot](https://github.com/daniel-liemng/charity_finder_react/blob/main/screenshot/charity-finder-photo.png)
 
 ## Installation
 
@@ -31,7 +33,7 @@ From your command line:
 
 ```bash
   # Clone this repository
-  $ git clone https://github.com/daniel-liemng/task_manager_react.git
+  $ git clone https://github.com/daniel-liemng/charity_finder_react.git
 
   # Go into the repository
   $ cd task_manager_react
