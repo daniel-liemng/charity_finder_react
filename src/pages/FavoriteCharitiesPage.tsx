@@ -56,7 +56,6 @@ const FavoriteCharitiesPage = () => {
         ) : (
           <Typography variant='h6'>No result found</Typography>
         )}
-        T
       </Box>
     </Box>
   );

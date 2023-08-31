@@ -1,10 +1,13 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import HomePage from './pages/HomePage';
-import CharityDetailsPage from './pages/CharityDetailsPage';
-import FavoriteCharitiesPage from './pages/FavoriteCharitiesPage';
 import { CssBaseline } from '@mui/material';
-import Layout from './components/Layout';
 import axios from 'axios';
+import { Layout } from './components';
+import {
+  CharityDetailsPage,
+  FavoriteCharitiesPage,
+  HomePage,
+  NotFoundPage,
+} from './pages';
 
 axios.defaults.baseURL = 'https://partners.every.org/v0.2';
 
@@ -30,6 +33,14 @@ const router = createBrowserRouter([
     element: (
       <Layout>
         <FavoriteCharitiesPage />
+      </Layout>
+    ),
+  },
+  {
+    path: '*',
+    element: (
+      <Layout>
+        <NotFoundPage />
       </Layout>
     ),
   },
