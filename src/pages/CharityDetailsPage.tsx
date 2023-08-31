@@ -21,6 +21,8 @@ const CharityDetailsPage = () => {
     getFavoritesFromLocalStorage()
   );
 
+  const [liked, setLiked] = useState(false);
+
   useEffect(() => {
     const fetchCharity = async () => {
       const { data } = await axios.get(`/nonprofit/${id}`);
@@ -29,7 +31,19 @@ const CharityDetailsPage = () => {
     };
 
     fetchCharity();
-  }, []);
+  }, [id]);
+
+  useEffect(() => {
+    const checkLiked = () => {
+      favoriteList.map((item) => {
+        if (item?.ein === id) {
+          setLiked(true);
+        }
+      });
+    };
+
+    checkLiked();
+  }, [liked, favoriteList, id]);
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const handleLike = (charity: any) => {
@@ -37,6 +51,15 @@ const CharityDetailsPage = () => {
     setFavoriteList(newList);
     localStorage.setItem('favorite', JSON.stringify(newList));
   };
+
+  const handleUnlike = (charity: any) => {
+    const newList = favoriteList.filter((cha) => cha?.ein !== charity.ein);
+    setFavoriteList(newList);
+    localStorage.setItem('favorite', JSON.stringify(newList));
+    setLiked(false);
+  };
+
+  console.log('OOOO', liked);
 
   return (
     <Box sx={{ textAlign: 'center', marginTop: '3rem' }}>
@@ -75,15 +98,27 @@ const CharityDetailsPage = () => {
       </Box>
 
       <Box>
-        <Button
-          variant='outlined'
-          startIcon={
-            <FavoriteIcon fontSize='large' sx={{ color: '#ff0000' }} />
-          }
-          onClick={() => handleLike(charity)}
-        >
-          Like this organization
-        </Button>
+        {liked ? (
+          <Button
+            variant='outlined'
+            startIcon={
+              <FavoriteIcon fontSize='large' sx={{ color: '#808080' }} />
+            }
+            onClick={() => handleUnlike(charity)}
+          >
+            Unlike this organization
+          </Button>
+        ) : (
+          <Button
+            variant='outlined'
+            startIcon={
+              <FavoriteIcon fontSize='large' sx={{ color: '#ff0000' }} />
+            }
+            onClick={() => handleLike(charity)}
+          >
+            Like this organization
+          </Button>
+        )}
       </Box>
 
       <Typography variant='h6'>Website: {charity?.websiteUrl}</Typography>
