@@ -10,8 +10,6 @@ const getFavoritesFromLocalStorage = () => {
 const FavoriteCharitiesPage = () => {
   const fList = getFavoritesFromLocalStorage();
 
-  console.log('pppp', fList);
-
   return (
     <Box sx={{ textAlign: 'center', marginTop: '3rem' }}>
       <Typography variant='h4'>Favorite List</Typography>

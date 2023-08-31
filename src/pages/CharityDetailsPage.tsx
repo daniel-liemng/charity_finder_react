@@ -38,8 +38,6 @@ const CharityDetailsPage = () => {
     localStorage.setItem('favorite', JSON.stringify(newList));
   };
 
-  console.log(charity);
-
   return (
     <Box sx={{ textAlign: 'center', marginTop: '3rem' }}>
       <Box

@@ -11,8 +11,6 @@ interface SearchProps {
 const Search: React.FC<SearchProps> = ({ onSearch }) => {
   const [searchInput, setSearchInput] = useState<string>('');
 
-  console.log('AA', searchInput);
-
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const handleSubmit = (e: any) => {
     e.preventDefault();

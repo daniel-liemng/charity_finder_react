@@ -19,8 +19,6 @@ const HomePage = () => {
     fetchCharities();
   }, [searchTerm]);
 
-  console.log(charities);
-
   const handleSearch = (searchInput: string) => {
     setSearchTerm(searchInput);
   };
