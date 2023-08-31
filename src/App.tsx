@@ -19,11 +19,19 @@ const router = createBrowserRouter([
   },
   {
     path: '/charity/:id',
-    element: <CharityDetailsPage />,
+    element: (
+      <Layout>
+        <CharityDetailsPage />
+      </Layout>
+    ),
   },
   {
     path: '/favorites',
-    element: <FavoriteCharitiesPage />,
+    element: (
+      <Layout>
+        <FavoriteCharitiesPage />
+      </Layout>
+    ),
   },
 ]);
 
