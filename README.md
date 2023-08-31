@@ -19,6 +19,7 @@ A responsive charity finder web application that allows users to search for char
 ## Tech Stack
 
 **Client:** React, React Router Dom, Material-UI, Typescript
+
 **Data Fetching:** every.org API
 
 ## Screenshots
