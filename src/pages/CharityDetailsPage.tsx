@@ -6,12 +6,20 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 
+const getFavoritesFromLocalStorage = () => {
+  const list = localStorage.getItem('favorite');
+
+  return list ? JSON.parse(list) : [];
+};
+
 const CharityDetailsPage = () => {
   const { id } = useParams();
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [charity, setCharity] = useState<any>();
-  const [favoriteList, setFavoriteList] = useState<(string | undefined)[]>([]);
+  const [favoriteList, setFavoriteList] = useState<(string | undefined)[]>(
+    getFavoritesFromLocalStorage()
+  );
 
   useEffect(() => {
     const fetchCharity = async () => {
@@ -23,8 +31,9 @@ const CharityDetailsPage = () => {
     fetchCharity();
   }, []);
 
-  const handleLike = (ein: string) => {
-    const newList = [...favoriteList, ein];
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const handleLike = (charity: any) => {
+    const newList = [...favoriteList, charity];
     setFavoriteList(newList);
     localStorage.setItem('favorite', JSON.stringify(newList));
   };
@@ -73,7 +82,7 @@ const CharityDetailsPage = () => {
           startIcon={
             <FavoriteIcon fontSize='large' sx={{ color: '#ff0000' }} />
           }
-          onClick={() => handleLike(charity?.ein)}
+          onClick={() => handleLike(charity)}
         >
           Like this organization
         </Button>
