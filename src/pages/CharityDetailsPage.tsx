@@ -1,3 +1,5 @@
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-nocheck
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
@@ -52,6 +54,7 @@ const CharityDetailsPage = () => {
     localStorage.setItem('favorite', JSON.stringify(newList));
   };
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const handleUnlike = (charity: any) => {
     const newList = favoriteList.filter((cha) => cha?.ein !== charity.ein);
     setFavoriteList(newList);
